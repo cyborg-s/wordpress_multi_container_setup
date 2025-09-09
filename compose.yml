@@ -1,0 +1,34 @@
+services:
+  db:
+    env_file: .env
+    image: mariadb:11
+    container_name: wp-db
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+
+  wordpress:
+    env_file: .env
+    image: wordpress:6.2-php8.1-apache
+    container_name: wp-app
+    depends_on:
+      - db
+    ports:
+      - "${WORDPRESS_PORT}:${WORDPRESS_CONTAINER_PORT}"
+    restart: on-failure
+    environment:
+      WORDPRESS_DB_HOST: ${MARIADB_HOST}
+      WORDPRESS_DB_USER: ${MARIADB_USER}
+      WORDPRESS_DB_PASSWORD: ${MARIADB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MARIADB_DATABASE}
+    volumes:
+      - wp_data:/var/www/html
+
+volumes:
+  db_data:
+  wp_data:
