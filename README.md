@@ -15,7 +15,8 @@ This repository was created as part of my continuing education at the **Develope
 
 ## Prerequisites
 
-  * **Docker** 
+  * **Docker**
+  * **Compose**
 
 ## Description
 
@@ -45,7 +46,7 @@ This repository was created as part of my continuing education at the **Develope
 ```
 wordpress_multi_container_setup/
     ├── compose.yml
-    ├── exaple.env
+    ├── example.env
     └── README.md
 ```
 
@@ -57,6 +58,12 @@ This section gives brief and minimal instructions on how to use the setup. More 
 
    ```bash
    git clone git@github.com:cyborg-s/wordpress_multi_container_setup.git
+   ```
+
+1b. Navigate to the project directory:
+
+   ```bash
+   cd wordpress_multi_container_setup
    ```
 
 2. Create the `.env` file from the template and edit your own settings:
@@ -81,7 +88,7 @@ This section gives brief and minimal instructions on how to use the setup. More 
     * WordPress can be accessed at the IP address of your VM on port 8080:
 
       ```bash  
-      http://`<Your_VM_IP>`:8080
+      http://<Your_VM_IP>:8080
       ```  
 
     * When you open the page, you will be redirected to the installation page and can now start creating your account. After setup, a sample blog page will be displayed.
