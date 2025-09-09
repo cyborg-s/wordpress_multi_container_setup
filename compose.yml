@@ -14,7 +14,7 @@ services:
 
   wordpress:
     env_file: .env
-    image: wordpress:latest
+    image: wordpress:6.2-php8.1-apache
     container_name: wp-app
     depends_on:
       - db
